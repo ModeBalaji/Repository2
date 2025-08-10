@@ -1,13 +1,30 @@
-public class QuotientRemainder {
+// File: H2Utility.java
+import java.sql.SQLException;
 
-  public static void main(String[] args) {
+public class H2Utility {
 
-    int dividend = 25, divisor = 4;
+    // Add two numbers
+    public static int add(int a, int b) {
+        return a + b;
+    }
 
-    int quotient = dividend / divisor;
-    int remainder = dividend % divisor;
+    // Greet the user
+    public static String greet(String name) {
+        return "Hello, " + name + "!";
+    }
 
-    System.out.println("Quotient = " + quotient);
-    System.out.println("Remainder = " + remainder);
-  }
+    // Division with exception handling
+    public static double safeDivide(int numerator, int denominator) throws SQLException {
+        if (denominator == 0) {
+            throw new SQLException("Cannot divide by zero");
+        }
+        return (double) numerator / denominator;
+    }
+
+    // Combine all: compute (a + b) / c and greet the user
+    public static String computeAndGreet(String name, int a, int b, int c) throws SQLException {
+        int sum = add(a, b);
+        double result = safeDivide(sum, c);
+        return greet(name) + " The computed result is: " + result;
+    }
 }
